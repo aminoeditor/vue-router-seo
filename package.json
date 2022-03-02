@@ -1,0 +1,23 @@
+{
+  "name": "@aminoeditor/vue-router-seo",
+  "version": "1.0.0",
+  "description": "A router guard to add powerful seo functionality to vue router",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sprintf-js": "^1.1.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aminoeditor/vue-router-seo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aminoeditor/vue-router-seo/issues"
+  },
+  "homepage": "https://github.com/aminoeditor/vue-router-seo#readme"
+}
