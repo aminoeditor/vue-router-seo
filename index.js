@@ -4,7 +4,7 @@ const seoGuard = async (route, fallbackTitle='') => {
 	if( nearestWithTitle ) {
 		const { title } = nearestWithTitle.meta.seo;
 		if (typeof title === 'function') {
-			document.title = await nearestWithTitle.meta.seo.title(to);
+			document.title = await nearestWithTitle.meta.seo.title(route);
 		} else {
 			document.title = nearestWithTitle.meta.seo.title;
 		}
@@ -17,7 +17,7 @@ const seoGuard = async (route, fallbackTitle='') => {
 			const tag = document.createElement('meta');
 			Object.keys(tagDef).forEach(async key => {
 				if (typeof tagDef[key] === 'function') {
-					tag.setAttribute(key, await tagDef[key](to));
+					tag.setAttribute(key, await tagDef[key](route));
 				} else {
 					tag.setAttribute(key, tagDef[key]);
 				}
