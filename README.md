@@ -1,10 +1,16 @@
-**Install**
+# Vue-Router + SEO
+
+![Hero image for Vue-Router + SEO](doc/hero.png)
+
+A router guard to add robust SEO functionality to Vue Router. Another handy utility from [Team Amino](https://aminoeditor.com).
+
+### Installing Vue-Router + SEO
 
 ```
 npm install --save @aminoeditor/vue-router-seo
 ```
 
-**Add to your router**
+### Router configuration
 
 ```
 import { seoGuardWithNext } from '@aminoeditor/vue-router-seo';
@@ -64,4 +70,6 @@ app.use(router)
 app.mount('#app')
 ```
 
-Issues, discussions and PR on github :D
+### Contributing
+
+This project welcomes contributions of all types. Submit PRs, issues, and discussion topics [on GitHub](https://github.com/aminoeditor/vue-router-seo).
