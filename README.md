@@ -71,8 +71,8 @@ app.mount('#app')
 ```
 
 ### Available Exports
-| name | arguments | context
-|--|--|--|--|
+| name | arguments | context |
+|--|--|--|
 | seoGuard | `(route, fallbackTitle='')` | before, after
 | seoGuardWithNext | `(to, from, next, fallbackTitle='')` | before
 
