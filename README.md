@@ -106,7 +106,7 @@ router.beforeEach(() => seoGuardWithNext(...arguments, 'My Default Title Here'))
 ```
 
 ### Nested Routes
-Often times in more complex sites we use nested routes with layouts at the top level. To improve convenience this library will search all the up the hierarchy and grab the title closest to the active route.
+Often times in more complex sites we use nested routes with layouts at the top level. To improve convenience this library will search all the way up the hierarchy and grab the title closest to the active route.
 
 **Example**
 ```
