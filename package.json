@@ -8,9 +8,7 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "sprintf-js": "^1.1.2"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "repository": {
     "type": "git",
@@ -19,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/aminoeditor/vue-router-seo/issues"
   },
-  "homepage": "https://github.com/aminoeditor/vue-router-seo#readme"
+  "homepage": "https://github.com/aminoeditor/vue-router-seo#readme",
+  "directories": {
+    "doc": "doc"
+  }
 }
