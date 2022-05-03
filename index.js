@@ -1,6 +1,7 @@
 const seoGuard = async (route, fallbackTitle='') => {
-	const nearestWithTitle = route.matched.slice().reverse().find(r => r.meta && r.meta.seo && r.meta.seo.title);
-	const nearestWithMeta = route.matched.slice().reverse().find(r => r.meta && r.meta.seo && r.meta.seo.metaTags);
+	const nearestWithTitle = findNearest(route, r => r?.meta?.seo?.title);
+	const nearestWithMeta = findNearest(route, r => r?.meta?.seo?.metaTags);
+	const nearestWithRichSnippet = findNearest(route, r => r?.meta?.seo?.richSnippet);
 	if( nearestWithTitle ) {
 		const { title } = nearestWithTitle.meta.seo;
 		if (typeof title === 'function') {
@@ -26,6 +27,14 @@ const seoGuard = async (route, fallbackTitle='') => {
 			return tag;
 		}).forEach(tag => document.head.appendChild(tag));
 	}
+	if ( nearestWithRichSnippet ) {
+		const snippet = JSON.stringify(nearestWithRichSnippet.meta.seo.richSnippet);
+		const tag = document.createElement('script');
+		tag.setAttribute('type', 'application/ld+json');
+		tag.setAttribute('data-vue-router-controlled', '');
+		tag.text = snippet;
+		document.head.appendChild(tag);
+	}
 };
 
 const seoGuardWithNext = async (to, from, next, fallbackTitle='') => {
@@ -34,3 +43,7 @@ const seoGuardWithNext = async (to, from, next, fallbackTitle='') => {
 }
 
 export { seoGuard, seoGuardWithNext }
+
+function findNearest (route, filter) {
+	return route.matched.slice().reverse().find(filter);
+}
