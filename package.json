@@ -1,6 +1,6 @@
 {
   "name": "@aminoeditor/vue-router-seo",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A router guard to add powerful seo functionality to vue router",
   "main": "index.js",
   "scripts": {
