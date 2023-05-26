@@ -5,9 +5,9 @@ const seoGuard = async (route, fallbackTitle='') => {
 	if( nearestWithTitle ) {
 		const { title } = nearestWithTitle.meta.seo;
 		if (typeof title === 'function') {
-			document.title = await Promise.resolve().then(() => nearestWithTitle.meta.seo.title(route));
+			document.title = await Promise.resolve().then(() => title(route));
 		} else {
-			document.title = nearestWithTitle.meta.seo.title;
+			document.title = title;
 		}
 	}
 	else { document.title = fallbackTitle; }
@@ -17,7 +17,7 @@ const seoGuard = async (route, fallbackTitle='') => {
 		const { metaTags } = nearestWithMeta.meta.seo;
 		let tags = metaTags;
 		if (typeof metaTags === 'function') {
-			tags = await Promise.resolve().then(() => metaTags());
+			tags = await Promise.resolve().then(() => metaTags(route));
 		}
 		tags.map(tagDef => {
 			const tag = document.createElement('meta');
