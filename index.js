@@ -31,7 +31,6 @@ const seoGuard = async (route, fallbackTitle='') => {
 			tag.setAttribute('data-vue-router-controlled', '');
 			return tag;
 		}).forEach(tag => document.head.appendChild(tag));
-		}
 	}
 	if ( nearestWithRichSnippet ) {
 		const snippet = JSON.stringify(nearestWithRichSnippet.meta.seo.richSnippet);
