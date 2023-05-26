@@ -5,7 +5,7 @@ const seoGuard = async (route, fallbackTitle='') => {
 	if( nearestWithTitle ) {
 		const { title } = nearestWithTitle.meta.seo;
 		if (typeof title === 'function') {
-			document.title = await nearestWithTitle.meta.seo.title(route);
+			document.title = await Promise.resolve().then(() => nearestWithTitle.meta.seo.title(route));
 		} else {
 			document.title = nearestWithTitle.meta.seo.title;
 		}
@@ -14,7 +14,12 @@ const seoGuard = async (route, fallbackTitle='') => {
 
 	Array.from(document.querySelectorAll('[data-vue-router-controlled]')).map(el => el.parentNode.removeChild(el));
 	if ( nearestWithMeta ) {
-		nearestWithMeta.meta.seo.metaTags.map(tagDef => {
+		const { metaTags } = nearestWithMeta.meta.seo;
+		let tags = metaTags;
+		if (typeof metaTags === 'function') {
+			tags = await Promise.resolve().then(() => metaTags());
+		}
+		tags.map(tagDef => {
 			const tag = document.createElement('meta');
 			Object.keys(tagDef).forEach(async key => {
 				if (typeof tagDef[key] === 'function') {
@@ -26,6 +31,7 @@ const seoGuard = async (route, fallbackTitle='') => {
 			tag.setAttribute('data-vue-router-controlled', '');
 			return tag;
 		}).forEach(tag => document.head.appendChild(tag));
+		}
 	}
 	if ( nearestWithRichSnippet ) {
 		const snippet = JSON.stringify(nearestWithRichSnippet.meta.seo.richSnippet);
